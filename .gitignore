@@ -1,0 +1,7 @@
+*.pdf
+*.zip
+*.class
+edu/
+META-INF/
+*.jar
+github-token.txt
