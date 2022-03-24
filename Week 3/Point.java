@@ -15,8 +15,8 @@ import edu.princeton.cs.algs4.StdDraw;
 public class Point implements Comparable<Point> { // //Slide 7, section 2.1 // Slide 77, section 2.1
     // // Slide 44,45, section 2.2//
 
-    private final int x; // x-coordinate of this point
-    private final int y; // y-coordinate of this point
+    private final int x; // x-coordinate of this point //*** remember to set this variable to private */
+    private final int y; // y-coordinate of this point //*** remember to set this variable to private */
 
     /**
      * Initializes a new point.
@@ -28,6 +28,14 @@ public class Point implements Comparable<Point> { // //Slide 7, section 2.1 // S
         /* DO NOT MODIFY */
         this.x = x;
         this.y = y;
+    }
+
+    private int getX() {
+        return this.x;
+    }
+
+    private int getY() {
+        return this.y;
     }
 
     /**
@@ -98,8 +106,6 @@ public class Point implements Comparable<Point> { // //Slide 7, section 2.1 // S
             return 0;
         }
     }
-
-    public final Comparator<Point> SLOPE_ORDER = slopeOrder();
 
     private class SlopeOrder implements Comparator<Point> {
         public int compare(Point q1, Point q2) {
