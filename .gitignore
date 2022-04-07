@@ -5,3 +5,10 @@ edu/
 META-INF/
 *.jar
 github-token.txt
+collinear/
+8puzzle/
+FastCollinearPoints.txt
+input4.txt
+input48.txt
+input9.txt
+equidistant.txt
