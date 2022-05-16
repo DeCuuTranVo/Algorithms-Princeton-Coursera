@@ -1,6 +1,5 @@
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.BreadthFirstDirectedPaths;
 import edu.princeton.cs.algs4.Queue;
@@ -18,6 +17,7 @@ public class SAP {
         // Use the original graph to find the source vertex
         this.diGraphStructure = new Digraph(G);
         // System.out.println(this.diGraphStructure);
+
     }
 
     // length of shortest ancestral path between v and w; -1 if no such path
@@ -93,6 +93,32 @@ public class SAP {
             throw new IllegalArgumentException("v and w must not be null");
         }
 
+        int countV = 0;
+        for (Integer itemV : v) {
+            if (itemV == null) {
+                throw new IllegalArgumentException("item in v must not be null");
+                // return -1;
+            }
+            countV++;
+        }
+        if (countV == 0) {
+            // throw new IllegalArgumentException("v must not have zero length");
+            return -1;
+        }
+
+        int countW = 0;
+        for (Integer itemW : w) {
+            if (itemW == null) {
+                throw new IllegalArgumentException("item in w must not be null");
+                // return -1;
+            }
+            countW++;
+        }
+        if (countW == 0) {
+            // throw new IllegalArgumentException("w must not have zero length");
+            return -1;
+        }
+
         int minSumPathLength = Integer.MAX_VALUE;
         // Two breadth first search to learn connection information from each node
         BreadthFirstDirectedPaths pathV = new BreadthFirstDirectedPaths(this.diGraphStructure, v);
@@ -123,6 +149,32 @@ public class SAP {
     public int ancestor(Iterable<Integer> v, Iterable<Integer> w) {
         if (v == null || w == null) {
             throw new IllegalArgumentException("v and w must not be null");
+        }
+
+        int countV = 0;
+        for (Integer itemV : v) {
+            if (itemV == null) {
+                throw new IllegalArgumentException("item in v must not be null");
+                // return -1;
+            }
+            countV++;
+        }
+        if (countV == 0) {
+            // throw new IllegalArgumentException("v must not have zero length");
+            return -1;
+        }
+
+        int countW = 0;
+        for (Integer itemW : w) {
+            if (itemW == null) {
+                throw new IllegalArgumentException("item in w must not be null");
+                // return -1;
+            }
+            countW++;
+        }
+        if (countW == 0) {
+            // throw new IllegalArgumentException("w must not have zero length");
+            return -1;
         }
 
         int minCommonAncestor = -1;

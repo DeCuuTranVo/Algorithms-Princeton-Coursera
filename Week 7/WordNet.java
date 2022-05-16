@@ -3,6 +3,8 @@ import edu.princeton.cs.algs4.SeparateChainingHashST;
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.BinarySearchST;
+import edu.princeton.cs.algs4.DirectedCycle;
+import edu.princeton.cs.algs4.Topological;
 
 public class WordNet {
     private Digraph netDataStructure;
@@ -126,7 +128,29 @@ public class WordNet {
         // }
         // }
 
+        // DirectedCycle directedCycleChecking = new
+        // DirectedCycle(this.netDataStructure);
+        // if (directedCycleChecking.hasCycle()) {
+        // throw new IllegalArgumentException("the input graph must not have cycles");
+        // }
+
+        Topological topologicalOrderChecking = new Topological(this.netDataStructure);
+        if (!topologicalOrderChecking.hasOrder()) {
+            throw new IllegalArgumentException("the input graph must have topological order");
+        }
+
+        int countRootVertex = 0;
+        for (int i = 0; i < this.numSynsets; i++) {
+            if ((this.netDataStructure.outdegree(i) == 0) && (this.netDataStructure.indegree(i) > 0)) {
+                countRootVertex++;
+            }
+        }
+        if (countRootVertex > 1) {
+            throw new IllegalArgumentException("the input graph must have only 1 root");
+        }
+
         this.shortestPathSolver = new SAP(this.netDataStructure);
+
     }
 
     // returns all WordNet nouns
