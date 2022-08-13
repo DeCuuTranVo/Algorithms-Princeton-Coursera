@@ -37,8 +37,8 @@ public class MoveToFront {
         }
 
         while (!BinaryStdIn.isEmpty()) {
-            char byteCharacterReadIn = (char) BinaryStdIn.readByte();
-            char correspondingCharaterInSequence = orderedSequence.remove((int) byteCharacterReadIn);
+            char byteCharacterReadIn = BinaryStdIn.readChar();
+            char correspondingCharaterInSequence = orderedSequence.remove(byteCharacterReadIn);
             // StdOut.print(correspondingCharaterInSequence);
             BinaryStdOut.write(correspondingCharaterInSequence);
             orderedSequence.addFirst(correspondingCharaterInSequence);

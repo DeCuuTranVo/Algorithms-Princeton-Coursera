@@ -78,11 +78,13 @@ public class BurrowsWheeler {
         // Decode with BWT
         StringBuilder decodeStringBuilder = new StringBuilder();
         int iterIndex = first;
+        int progressCount = 0;
         do {
             char currentChar = aux[iterIndex];
             decodeStringBuilder.append(currentChar);
             iterIndex = next[iterIndex];
-        } while (iterIndex != first);
+            progressCount++;
+        } while (progressCount != N);
 
         String decodeString = decodeStringBuilder.toString();
 
